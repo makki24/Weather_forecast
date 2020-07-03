@@ -41,10 +41,13 @@
                         if (resp.cod === 200)
                         {
                             console.log(resp);
-                            let path=weath_icon+resp.weather[0].icon+"@2x.png"
+                            let path=weath_icon+resp.weather[0].icon+"@2x.png";
+                            let sunrise=new Date(resp.sys.sunrise*1000);
                             console.log(path);
                             document.getElementById('icon').setAttribute("src",path);
-                            document.getElementById('temp').innerHTML =resp.main.temp+"<sup>o</sup> cel";
+                            document.getElementById('temp').innerHTML =" : "+resp.main.temp+"<sup>o</sup> cel";
+                            document.getElementById('rise').innerHTML =" : "+sunrise.getHours()+":"+sunrise.getMinutes()+":" +
+                                ""+sunrise.getSeconds();
                         }
                         else
                         {
