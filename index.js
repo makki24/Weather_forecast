@@ -3,14 +3,31 @@ const app =express();
 const fetch =require('node-fetch');
 const http =require('http');
 const bodyParser= require('body-parser');
+const fs =require('fs');
 
 app.use(bodyParser.json());
 
 let lon=75.698975,lat=13.946204;
 let key="5cfaa3fc91d59befb10d31a841f0ece5";
 
+app.get('/',(req,res,next) =>
+{
+    res.sendFile("./public/index.html",{root:__dirname});
+})
 
-app.get('/',(req,res,next) =>{
+app.get('/script.js',(req,res,next) =>
+{
+    var script= fs.readFileSync('public/script.js',"utf8");
+    res.end(script);
+})
+
+app.get('/styles.css',(req,res,next) =>
+{
+    var script= fs.readFileSync('public/styles.css',"utf8");
+    res.end(script);
+})
+
+app.post('/detail',(req,res,next) =>{
    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${req.body.lat}&lon=${req.body.lon}&units=metric&appid=${key}`)
        .then((resp)=>
        {
@@ -29,8 +46,8 @@ app.get('/',(req,res,next) =>{
         {
             if(resp.cod===200)
             {
-                let date =new Date(resp.sys.sunset*1000)
-                console.log("Time is "+date.getHours()+" : "+date.getMinutes()+" : "+date.getSeconds());
+               /* let date =new Date(resp.sys.sunset*1000)
+                console.log("Time is "+date.getHours()+" : "+date.getMinutes()+" : "+date.getSeconds());*/
                 res.statusCode=200;
                 res.setHeader('Content-Type',"application/json");
                 return res.json(resp);
@@ -43,7 +60,7 @@ app.get('/',(req,res,next) =>{
             }
         })
            .catch(err=>{
-               res.statusCode=200;
+                res.statusCode=200;
                 res.setHeader('Content-Type',"application/json");
                 return res.json(err);
            })

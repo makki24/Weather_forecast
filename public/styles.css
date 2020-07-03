@@ -1,0 +1,23 @@
+body
+{
+    margin-left: 1.5in;
+    margin-right: 1.5in;
+    margin-top: 1in;
+}
+
+.main
+{
+    display: block;
+    font-weight: bold;
+    background-color: olivedrab;
+    font-size: 25px;
+    text-align: left;
+    margin-left: 2in;
+    margin-right: 2in;
+}
+/*
+#gbtn
+{
+    margin-left: 1.5in;
+    margin-right: 1.5in;
+}*/
