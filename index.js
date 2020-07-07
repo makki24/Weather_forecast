@@ -35,7 +35,6 @@ app.post('/detail',(req,res,next) =>{
                return resp;
            else
            {
-               console.log(resp);
                var err =new Error("Error");
                err.statusText=resp.statusText;
                throw (err);

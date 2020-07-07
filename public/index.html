@@ -8,6 +8,14 @@
 <body>
     <button onclick="getLocation()" id="gbtn">Get Your Weather</button>
     <br /><br />
+    <div>OR</div>
+    <br />
+    <form id='form' onsubmit="getData();return false;">
+        <label>Enter latitude </label> <input type="text" placeholder="Enter Latitude" id="lat" name="lat"/>
+        <label>Enter longitude </label><input type="text" placeholder="Enter Longitude" id="lon" name="lon"/>
+        <button type="submit" id="sbt"> Submit </button>
+    </form>
+    <br />
     <div id="pos">
     </div>
     <br /><br/>

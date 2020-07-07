@@ -15,6 +15,17 @@ body
     margin-left: 2in;
     margin-right: 2in;
 }
+
+#sbt
+{
+    background-color: deepskyblue;
+}
+
+#form
+{
+    font-size: larger;
+}
+
 /*
 #gbtn
 {
