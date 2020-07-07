@@ -8,16 +8,23 @@
 <body>
     <button onclick="getLocation()" id="gbtn">Get Your Weather</button>
     <br /><br />
-    <div>OR</div>
-    <br />
-    <form id='form' onsubmit="getData();return false;">
-        <label>Enter latitude </label> <input type="text" placeholder="Enter Latitude" id="lat" name="lat"/>
-        <label>Enter longitude </label><input type="text" placeholder="Enter Longitude" id="lon" name="lon"/>
-        <button type="submit" id="sbt"> Submit </button>
-    </form>
-    <br />
     <div id="pos">
     </div>
+    <br />
+    <div>OR</div>
+    <br />
+    <form id='form' class="form" onsubmit="getData();return false;">
+        <span style="width:150px ;display: inline-block">Enter latitude </span> <input type="text" placeholder="Enter Latitude" id="lat" name="lat"/>
+        <span style="width:150px ;display: inline-block; margin:10px">Enter longitude </span><input type="text" placeholder="Enter Longitude" id="lon" name="lon"/>
+        <button type="submit" class="sbt" style="margin:10px"> Submit </button>
+    </form>
+    <br />
+    <div>OR</div>
+    <br />
+     <form id='place' class="form" onsubmit="getDataforCity();return false;">
+        <span style="width:150px ;display: inline-block">Enter City </span> <input type="text" placeholder="Enter City" id="city_" name="city_"/>
+        <button type="submit" class="sbt" style="margin: 10px"> Submit </button>
+    </form>
     <br /><br/>
     <div class="main">
         <div><img src="" id="icon"/><span id="desc" style="position: absolute; left: 4.8in; margin-top: 25px; color: darkmagenta"></span></div>

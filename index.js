@@ -65,6 +65,48 @@ app.post('/detail',(req,res,next) =>{
            })
 })
 
+app.post('/city_detail',(req,res,next) =>
+{
+    let site="http://api.openweathermap.org/data/2.5/weather?q="+req.body.city+"&units=metric&appid=5cfaa3fc91d59befb10d31a841f0ece5";
+    fetch(site)
+        .then(resp=>
+        {
+            if(resp.ok)
+                return resp;
+            else
+            {
+                throw new Error(resp.statusText);
+            }
+        },err=>
+        {
+            throw err
+        })
+        .then(resp => resp.json())
+        .then((resp) =>
+        {
+            if(resp.cod===200)
+            {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', "application/json");
+                return res.json(resp);
+            }
+            else
+            {
+                res.statusCode=501;
+                console.log(resp);
+                res.end();
+            }
+        })
+        .catch((err) =>
+        {
+            res.statusCode=200;
+            res.setHeader('Content-Type',"application/json");
+            return res.json(err);
+        })
+})
+
+
+
 var port = (process.env.PORT || '3000');
 app.set('port',port);
 

@@ -16,12 +16,12 @@ body
     margin-right: 2in;
 }
 
-#sbt
+.sbt
 {
     background-color: deepskyblue;
 }
 
-#form
+.form
 {
     font-size: larger;
 }
