@@ -96,7 +96,7 @@ function getLocation()
         {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            document.getElementById("pos").innerHTML = "Lattitude is " + lat + " longitude is " + lon;
+            document.getElementById("pos").innerHTML = "Your Lattitude is " + lat + " and  longitude is " + lon;
             let obj={lat,lon};
             console.log(obj);
             fetchRequest(obj);
