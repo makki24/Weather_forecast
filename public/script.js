@@ -44,7 +44,7 @@ function fetchRequest(obj)
         return;
     }
 
-    fetch("http://localhost:3000/detail",
+    fetch(`http://localhost:${process.env.PORT}/detail`,
             {
                 method:'POST',
                 headers:{
