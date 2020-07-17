@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 let lon=75.698975,lat=13.946204;
 let key="5cfaa3fc91d59befb10d31a841f0ece5";
 
+app.get('/top.ico',(req,res,next) =>
+{
+    res.sendFile("tpi.ico",{root:__dirname});
+})
 app.get('/',(req,res,next) =>
 {
     res.sendFile("./public/index.html",{root:__dirname});

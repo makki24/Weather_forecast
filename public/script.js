@@ -44,7 +44,7 @@ function fetchRequest(obj)
         return;
     }
 
-    fetch(`http://localhost:${process.env.PORT}/detail`,
+    fetch(`/detail`,
             {
                 method:'POST',
                 headers:{
@@ -120,7 +120,7 @@ function getDataforCity()
     let formEl = document.forms.place;
     let formData = new FormData(formEl);
     let name=formData.get('city_');
-    return fetch("http://localhost:3000/city_detail",
+    return fetch("/city_detail",
         {
             method:'POST',
             headers:{
