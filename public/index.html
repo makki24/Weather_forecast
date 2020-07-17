@@ -15,27 +15,29 @@
     <div>OR</div>
     <br />
     <form id='form' class="form" onsubmit="getData();return false;">
-        <span style="width:150px ;display: inline-block">Enter latitude </span> <input type="text" placeholder="Enter Latitude" id="lat" name="lat"/>
-        <span style="width:150px ;display: inline-block; margin:10px">Enter longitude </span><input type="text" placeholder="Enter Longitude" id="lon" name="lon"/>
+        <span style="width:150px ;display: inline-block">Enter latitude </span> <input class="entry" type="text"
+                placeholder="Enter Latitude" id="lat" name="lat"/>
+        <span style="width:150px ;display: inline-block; margin:10px">Enter longitude </span><input class="entry"
+                type="text" placeholder="Enter Longitude" id="lon" name="lon"/>
         <button type="submit" class="sbt" style="margin:10px"> Submit </button>
     </form>
     <br />
     <div>OR</div>
     <br />
      <form id='place' class="form" onsubmit="getDataforCity();return false;">
-        <span style="width:150px ;display: inline-block">Enter City </span> <input type="text" placeholder="Enter City" id="city_" name="city_"/>
+        <span style="width:150px ;display: inline-block";   >Enter City </span> <input type="text" class="entry" placeholder="Enter City" id="city_" name="city_"/>
         <button type="submit" class="sbt" style="margin: 10px"> Submit </button>
     </form>
     <br /><br/>
     <div class="main">
         <div><img src="" id="icon"/><span id="desc" style="position: absolute; left: 4.8in; margin-top: 25px; color: darkmagenta"></span></div>
-        <div><span style= "margin:5px; width: 300px; display:inline-block;">Temparature </span> <span id="temp" style="margin-left: 2.8in"></span></div>
-        <div><span style= "margin:5px; width: 300px; display:inline-block;">Sun rise at </span> <span id="rise" style="margin-left:2.8in"></span></div>
-        <div><span style= "margin:5px; width: 300px; display:inline-block;">Sun set </span> <span id="set" style="margin-left:2.8in"></span></div>
-        <div><span style= "margin:5px; width: 300px; display:inline-block;">City </span> <span id="city" style="margin-left:2.8in"></span></div>
-        <div><span style= "margin:5px; width: 300px; display:inline-block;">Country </span> <span id="country" style="margin-left:2.8in"></span><span>
+        <div style="display: flex"><span style= "margin:5px; width: 300px; flex: 1;">Temparature </span> <span id="temp" style="flex:1"></span></div>
+        <div style="display: flex"><span style= "margin:5px; width: 300px; flex: 1">Sun rise at </span> <span id="rise" style="flex: 1"></span></div>
+        <div style="display:flex;"><span style= "margin:5px; width: 300px; flex: 1">Sun set </span> <span id="set" style="flex: 1"></span></div>
+        <div style="display:flex;"><span style= "margin:5px; width: 300px; flex: 1">City </span> <span id="city" style="flex: 1"></span></div>
+        <div style="display:flex;"><span style= "margin:5px; width: 300px; flex: 1">Country </span> <span style="flex: 1"><span id="country"></span><span>
             <img src="" width="25px" id="flg" />
-        </span></div>
+        </span></span></div>
     </div>
     <script src="script.js"></script>
 </body>
