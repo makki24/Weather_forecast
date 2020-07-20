@@ -3,7 +3,7 @@
  let weath_icon ="http://openweathermap.org/img/wn/";
  let flag_icon= "http://openweathermap.org/images/flags/"
 
- function display(resp)
+function display(resp)
  {
     console.log(resp);
     let path=weath_icon+resp.weather[0].icon+"@2x.png";
@@ -146,4 +146,23 @@ function getDataforCity()
         {
             console.log(err);
         })
+}
+
+function startUp()
+{
+    console.log("HERE\n");
+
+    let obj=document.getElementById('card');
+    let days=['sun','mon','tue','wed','thu','fri','sat','sun'];
+    obj=obj.querySelectorAll('.oneday');
+    let i=new Date().getDay();
+    i=(i+1)%7;
+    obj.forEach((tile,index) =>
+    {
+        tile.querySelector('.date').textContent=days[i].toUpperCase();
+        i=(i+1)%7;
+        tile.querySelector('.date').setAttribute("style","text-align: center;" +
+            "font-size:20px")
+    })
+    console.log(obj);
 }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" href="./top.ico" type="image/x-icon" />
 </head>
-<body>
+<body onload="startUp();">
     <button onclick="getLocation()" id="gbtn">Get Your Weather</button>
     <br /><br />
     <div id="pos">
@@ -38,6 +38,69 @@
         <div style="display:flex;"><span style= "margin:5px; width: 300px; flex: 1">Country </span> <span style="flex: 1"><span id="country"></span><span>
             <img src="" width="25px" id="flg" />
         </span></span></div>
+    </div>
+
+    <div class="card" id="card" style="margin-top: 50px" >
+            <div class="oneday">
+              <div class="date"></div>
+              <img src="" />
+              <div class="temp-high">
+                <span class="value"></span>
+              </div>
+              <div class="temp-low">
+                <span class="value"></span>
+              </div>
+            </div>
+            <div class="oneday">
+              <div class="date"></div>
+              <img src="" />
+              <div class="temp-high">
+                <span class="value"></span>
+              </div>
+              <div class="temp-low">
+                <span class="value"></span>
+              </div>
+            </div>
+            <div class="oneday">
+              <div class="date"></div>
+              <div class="icon"></div>
+              <div class="temp-high">
+                <span class="value"></span>
+              </div>
+              <div class="temp-low">
+                <span class="value"></span>
+              </div>
+            </div>
+            <div class="oneday">
+              <div class="date"></div>
+              <div class="icon"></div>
+              <div class="temp-high">
+                <span class="value"></span>
+              </div>
+              <div class="temp-low">
+                <span class="value"></span>
+              </div>
+            </div>
+            <div class="oneday">
+              <div class="date"></div>
+              <div class="icon"></div>
+              <div class="temp-high">
+                <span class="value"></span>
+              </div>
+              <div class="temp-low">
+                <span class="value"></span>
+              </div>
+            </div>
+            <div class="oneday">
+              <div class="date"></div>
+              <div class="icon"></div>
+              <div class="temp-high">
+                <span class="value"></span>
+              </div>
+              <div class="temp-low">
+                <span class="value"></span>
+              </div>
+            </div>
     </div>
     <script src="script.js"></script>
 </body>
