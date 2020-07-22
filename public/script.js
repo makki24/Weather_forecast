@@ -84,9 +84,47 @@ function fetchRequest(obj)
             .catch(err =>
             {
                 console.log(err);
-            })
+            });
+    fetchFuture(obj);
 }
 
+function fetchFuture(obj)
+{
+    fetch('/future',
+        {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify(obj)
+        })
+    .then((resp) =>
+            {
+
+                if (resp.ok)
+                    return resp;
+                else
+                {
+                    console.log(resp);
+                    var err = new Error("Error");
+                    err.statusText = resp.statusText;
+                    throw (err);
+                }
+            }, err =>
+            {
+                console.log(err);
+                throw err
+            })
+            .then((resp) => resp.json())
+            .then((resp) =>
+            {
+                console.log(resp);
+            })
+            .catch(err =>
+            {
+                console.log(err);
+            })
+}
 
 function getLocation()
 {
@@ -120,7 +158,7 @@ function getDataforCity()
     let formEl = document.forms.place;
     let formData = new FormData(formEl);
     let name=formData.get('city_');
-    return fetch("/city_detail",
+    fetch("/city_detail",
         {
             method:'POST',
             headers:{
@@ -139,8 +177,8 @@ function getDataforCity()
         .then( resp => resp.json())
         .then (resp =>
         {
-            console.log(resp);
             display(resp);
+            fetchFuture(resp.coord);
         })
         .catch(err=>
         {
@@ -150,8 +188,6 @@ function getDataforCity()
 
 function startUp()
 {
-    console.log("HERE\n");
-
     let obj=document.getElementById('card');
     let days=['sun','mon','tue','wed','thu','fri','sat','sun'];
     obj=obj.querySelectorAll('.oneday');
@@ -164,5 +200,4 @@ function startUp()
         tile.querySelector('.date').setAttribute("style","text-align: center;" +
             "font-size:20px")
     })
-    console.log(obj);
 }

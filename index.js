@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 let lon=75.698975,lat=13.946204;
 let key="5cfaa3fc91d59befb10d31a841f0ece5";
 
+//https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=hourly,minutely&appid=5cfaa3fc91d59befb10d31a841f0ece5
 app.get('/top.ico',(req,res,next) =>
 {
     res.sendFile("tpi.ico",{root:__dirname});
@@ -29,6 +30,25 @@ app.get('/styles.css',(req,res,next) =>
 {
     var script= fs.readFileSync('public/styles.css',"utf8");
     res.end(script);
+})
+
+app.post('/future',(req,res,next) =>
+{
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${req.body.lat}&lon=${req.body.lon}&exclude=hourly,
+           minutely&units=metric&appid=${key}`)
+        .then((resp)=>
+        {
+            if(resp.ok)
+                return resp;
+        },e=>{throw e})
+        .then(resp=>resp.json())
+        .then(resp=>
+        {
+            res.statusCode=200;
+            res.setHeader('Content-Type','application/json');
+            return res.json(resp);
+        })
+        .catch(e=> {console.log(e)});
 })
 
 app.post('/detail',(req,res,next) =>{
