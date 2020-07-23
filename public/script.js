@@ -5,7 +5,6 @@
 
 function display(resp)
  {
-    console.log(resp);
     let path=weath_icon+resp.weather[0].icon+"@2x.png";
     let sunrise=new Date(resp.sys.sunrise*1000);
     let sunset =new Date(resp.sys.sunset*1000);
@@ -35,6 +34,35 @@ function display(resp)
         document.getElementById('flg').setAttribute("src", flg_path);
     }
  }
+
+function futureDisplay(resp)
+{
+    let i=0;
+    let obj=document.getElementById('card');
+    obj=obj.querySelectorAll('.oneday');
+    obj.forEach(tile=>
+    {
+        tile.querySelector('img').setAttribute('src',weath_icon+resp.daily[i].weather[0].icon+"@2x.png")
+        tile.querySelector('.description').textContent=
+            resp.daily[i].weather[0].description.charAt(0).toUpperCase()+resp.daily[i].weather[0].description.slice(1);
+        tile.querySelector('.temp .value').innerHTML=
+            "Temp <div>"+resp.daily[i].temp.min+" - "+resp.daily[i].temp.max+"<sup>o</sup>C</div>";
+        tile.querySelector('.temp .morn').textContent="Morn:"+resp.daily[i].temp.morn;
+        tile.querySelector('.temp .day').textContent="Day:"+resp.daily[i].temp.day;
+        tile.querySelector('.temp .evn').textContent="Evening:"+resp.daily[i].temp.eve;
+        tile.querySelector('.temp .night').textContent="Night:"+resp.daily[i].temp.night;
+        let sunrise=new Date(resp.daily[i].sunrise*1000);
+        let sunset =new Date(resp.daily[i].sunset*1000);
+        tile.querySelector('.sunrise').textContent="Sunrise: "+sunrise.getHours()+":"+sunrise.getMinutes()+":" +
+        ""+sunrise.getSeconds();
+        tile.querySelector('.sunset').textContent="Sunset: "+sunset.getHours()%12+":"+sunset.getMinutes()+":" +
+        ""+sunset.getSeconds();
+        tile.querySelector('.wind').innerHTML="Wind: "+resp.daily[i].wind_speed+"mps "+resp.daily[i].wind_deg+
+        "<sup>o</sup>";
+        tile.querySelector('.humidity').textContent="Humidity "+resp.daily[i].humidity+" %"
+        i++;
+    })
+}
 
 function fetchRequest(obj)
 {
@@ -119,6 +147,7 @@ function fetchFuture(obj)
             .then((resp) =>
             {
                 console.log(resp);
+                futureDisplay(resp);
             })
             .catch(err =>
             {
@@ -136,7 +165,6 @@ function getLocation()
             lon = position.coords.longitude;
             document.getElementById("pos").innerHTML = "Your Lattitude is " + lat + " and  longitude is " + lon;
             let obj={lat,lon};
-            console.log(obj);
             fetchRequest(obj);
         })
     }
@@ -192,12 +220,11 @@ function startUp()
     let days=['sun','mon','tue','wed','thu','fri','sat','sun'];
     obj=obj.querySelectorAll('.oneday');
     let i=new Date().getDay();
-    i=(i+1)%7;
     obj.forEach((tile,index) =>
     {
         tile.querySelector('.date').textContent=days[i].toUpperCase();
         i=(i+1)%7;
-        tile.querySelector('.date').setAttribute("style","text-align: center;" +
+        tile.querySelector('.date').setAttribute("style","" +
             "font-size:20px")
     })
 }

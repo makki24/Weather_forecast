@@ -43,6 +43,7 @@ body
     background-color: bisque;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     border-radius: 2px;
     box-shadow:
                 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -55,4 +56,24 @@ body
 {
     flex: 1;
     justify-content: space-around;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.oneday .description
+{
+    color: darkslategray;
+}
+
+
+.oneday .sunrise
+{
+}
+.oneday .temp .value
+{
+    color: blueviolet;
+}
+.oneday div
+{
+    margin: 10px;
 }
