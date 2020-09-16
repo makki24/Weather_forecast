@@ -8,8 +8,7 @@ const fs =require('fs');
 app.use(bodyParser.json());
 
 let lon=75.698975,lat=13.946204;
-let key="5cfaa3fc91d59befb10d31a841f0ece5";
-
+let key=require('./credential.js');
 //https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=hourly,minutely&appid=5cfaa3fc91d59befb10d31a841f0ece5
 app.get('/top.ico',(req,res,next) =>
 {
